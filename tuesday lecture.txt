@@ -1,0 +1,507 @@
+
+Setting environment for using XAMPP for Windows.
+admin@ACPC-10 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| data6to9           |
+| emp10to1           |
+| emp2               |
+| information_schema |
+| itvedant           |
+| jyp                |
+| mysql              |
+| performance_schema |
+| pg                 |
+| phpmyadmin         |
+| pratik_db          |
+| pro                |
+| rohit              |
+| sample             |
+| sql10to12          |
+| test               |
+| todo               |
++--------------------+
+17 rows in set (0.129 sec)
+
+MariaDB [(none)]> use emp2;
+Database changed
+MariaDB [emp2]> desc emp2;
+ERROR 1146 (42S02): Table 'emp2.emp2' doesn't exist
+MariaDB [emp2]> desc emp2;
+ERROR 1146 (42S02): Table 'emp2.emp2' doesn't exist
+MariaDB [emp2]> exit
+Bye
+
+admin@ACPC-10 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> desc emp2;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| data6to9           |
+| emp10to1           |
+| emp2               |
+| information_schema |
+| itvedant           |
+| jyp                |
+| mysql              |
+| performance_schema |
+| pg                 |
+| phpmyadmin         |
+| pratik_db          |
+| pro                |
+| rohit              |
+| sample             |
+| sql10to12          |
+| test               |
+| todo               |
++--------------------+
+17 rows in set (0.002 sec)
+
+MariaDB [(none)]> create table emp(id integer,name char(20),email vachar(30),contact integer,address varchar(30));
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create database batcht430;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use batcht430;
+Database changed
+MariaDB [batcht430]> create table emp(id integer,name char(20),email vachar(30),contact integer,address varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(30),contact integer,address varchar(30))' at line 1
+MariaDB [batcht430]> create table emp(id integer,name char(20),email varchar(30),contact integer,address varchar(30));
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [batcht430]> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | YES  |     | NULL    |       |
+| name    | char(20)    | YES  |     | NULL    |       |
+| email   | varchar(30) | YES  |     | NULL    |       |
+| contact | int(11)     | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.036 sec)
+
+MariaDB [batcht430]> insert into emp values(1,'Ramesh','r@gmail.com',2323232323,'Bhiwandi');
+Query OK, 1 row affected, 1 warning (0.099 sec)
+
+MariaDB [batcht430]> insert into emp values(2,'suresh','s@gmail.com',2323232323,'Bhiwandi');
+Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> select * from emp;
++------+--------+-------------+------------+----------+
+| id   | name   | email       | contact    | address  |
++------+--------+-------------+------------+----------+
+|    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+|    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
++------+--------+-------------+------------+----------+
+2 rows in set (0.001 sec)
+
+MariaDB [batcht430]> insert into emp values(3,'jayesh','j@gmail.com',3223232323,'Bhiwandi');
+Query OK, 1 row affected, 1 warning (0.004 sec)
+
+MariaDB [batcht430]> insert into emp values(4,'mayesh','m@gmail.com',4242424242,'Dombivli');
+Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> insert into emp values(5,'payesh','p@gmail.com',4242424242,'kalyan west',6,'piyush','pu@gmail.com',4343434343,kalyan east);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'east)' at line 1
+MariaDB [batcht430]> insert into emp values(5,'jayesh','j@gmail.com',3223232323,'Bhiwandi');
+Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> select * from emp;
++------+--------+-------------+------------+----------+
+| id   | name   | email       | contact    | address  |
++------+--------+-------------+------------+----------+
+|    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+|    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
+|    3 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+|    4 | mayesh | m@gmail.com | 2147483647 | Dombivli |
+|    5 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
++------+--------+-------------+------------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [batcht430]> update emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to emp1' at line 1
+MariaDB [batcht430]> alter table emp rename table emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp1' at line 1
+MariaDB [batcht430]> alter table emp rename emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to emp1' at line 1
+MariaDB [batcht430]> alter table emp rename table emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp to emp1' at line 1
+MariaDB [batcht430]> alter table emp rename to emp1;
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [batcht430]> alter table emp1 rename to emp;
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [batcht430]> select * from emp;
++------+--------+-------------+------------+----------+
+| id   | name   | email       | contact    | address  |
++------+--------+-------------+------------+----------+
+|    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+|    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
+|    3 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+|    4 | mayesh | m@gmail.com | 2147483647 | Dombivli |
+|    5 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
++------+--------+-------------+------------+----------+
+5 rows in set (0.003 sec)
+
+MariaDB [batcht430]> insert into emp values(6,'jayesh','j@gmail.com',345454545,'Thane'),(7,'suresh dada','mj@gmail.com',8585858858,'Delhi');
+Query OK, 2 rows affected, 1 warning (0.005 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+----------+
+| id   | name        | email        | contact    | address  |
++------+-------------+--------------+------------+----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi    |
++------+-------------+--------------+------------+----------+
+7 rows in set (0.001 sec)
+
+MariaDB [batcht430]> insert into emp(id,name) value(8,'mahesh');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [batcht430]> insert into emp(id,name) value(8,'mahesh'),(9,'Kamesh');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> insert into emp(id) values(9),(10),(11),(12);
+Query OK, 4 rows affected (0.005 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+----------+
+| id   | name        | email        | contact    | address  |
++------+-------------+--------------+------------+----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi    |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    9 | Kamesh      | NULL         |       NULL | NULL     |
+|    9 | NULL        | NULL         |       NULL | NULL     |
+|   10 | NULL        | NULL         |       NULL | NULL     |
+|   11 | NULL        | NULL         |       NULL | NULL     |
+|   12 | NULL        | NULL         |       NULL | NULL     |
++------+-------------+--------------+------------+----------+
+14 rows in set (0.001 sec)
+
+MariaDB [batcht430]> delete * from emp where (id,name,email,contact,addrees)=null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* from emp where (id,name,email,contact,addrees)=null' at line 1
+MariaDB [batcht430]> delete * from emp where (id,name,email,contact,addrees) is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* from emp where (id,name,email,contact,addrees) is null' at line 1
+MariaDB [batcht430]>
+MariaDB [batcht430]> Setting environment for using XAMPP for Windows.
+    -> admin@ACPC-10 c:\xampp
+ERROR: Unknown command '\x'.
+    -> # mysql -u root
+    -> Welcome to the MariaDB monitor.  Commands end with ; or \g.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Setting environment for using XAMPP for Windows.
+admin@ACPC-10 c:\xampp
+
+Welc...' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'or' at line 1
+    -> Your MariaDB connection id is 8
+    -> Server version: 10.4.28-MariaDB mariadb.org binary distribution
+    ->
+    -> Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    ->
+    -> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    ->
+    -> MariaDB [(none)]> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org...' at line 1
+MariaDB [batcht430]> +--------------------+
+    -> | Database           |
+    -> +--------------------+
+    -> | data6to9           |
+    -> | emp10to1           |
+    -> | emp2               |
+    -> | information_schema |
+    -> | itvedant           |
+    -> | jyp                |
+    -> | mysql              |
+    -> | performance_schema |
+    -> | pg                 |
+    -> | phpmyadmin         |
+    -> | pratik_db          |
+    -> | pro                |
+    -> | rohit              |
+    -> | sample             |
+    -> | sql10to12          |
+    -> | test               |
+    -> | todo               |
+    -> +--------------------+
+    -> 17 rows in set (0.129 sec)
+    ->
+    -> MariaDB [(none)]> use emp2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------------+
+| Database           |
++--------------------+
+| data6t...' at line 1
+MariaDB [batcht430]> Database changed
+    -> MariaDB [emp2]> desc emp2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Database changed
+MariaDB [emp2]> desc emp2' at line 1
+MariaDB [batcht430]> ERROR 1146 (42S02): Table 'emp2.emp2' doesn't exist
+    '> MariaDB [emp2]> desc emp2;
+    '> ERROR 1146 (42S02): Table 'emp2.emp2' doesn't exist
+    -> MariaDB [emp2]> exit
+    -> Bye
+    ->
+    -> admin@ACPC-10 c:\xampp
+ERROR: Unknown command '\x'.
+    -> # mysql -u root
+    -> Welcome to the MariaDB monitor.  Commands end with ; or \g.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1146 (42S02): Table 'emp2.emp2' doesn't exist
+MariaDB [emp2]> desc emp2...' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'or' at line 1
+    -> Your MariaDB connection id is 9
+    -> Server version: 10.4.28-MariaDB mariadb.org binary distribution
+    ->
+    -> Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    ->
+    -> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    ->
+    -> MariaDB [(none)]> desc emp2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.
+Your MariaDB connection id is 9
+Server version: 10.4.28-MariaDB mariadb.org...' at line 1
+MariaDB [batcht430]> ERROR 1046 (3D000): No database selected
+    -> MariaDB [(none)]> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show databases' at line 1
+MariaDB [batcht430]> +--------------------+
+    -> | Database           |
+    -> +--------------------+
+    -> | data6to9           |
+    -> | emp10to1           |
+    -> | emp2               |
+    -> | information_schema |
+    -> | itvedant           |
+    -> | jyp                |
+    -> | mysql              |
+    -> | performance_schema |
+    -> | pg                 |
+    -> | phpmyadmin         |
+    -> | pratik_db          |
+    -> | pro                |
+    -> | rohit              |
+    -> | sample             |
+    -> | sql10to12          |
+    -> | test               |
+    -> | todo               |
+    -> +--------------------+
+    -> 17 rows in set (0.002 sec)
+    ->
+    -> MariaDB [(none)]> create table emp(id integer,name char(20),email vachar(30),contact integer,address varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------------+
+| Database           |
++--------------------+
+| data6t...' at line 1
+MariaDB [batcht430]> ERROR 1046 (3D000): No database selected
+    -> MariaDB [(none)]> create database batcht430;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create database ba...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected (0.003 sec)
+    ->
+    -> MariaDB [(none)]> use batcht430;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use batcht430' at line 1
+MariaDB [batcht430]> Database changed
+    -> MariaDB [batcht430]> create table emp(id integer,name char(20),email vachar(30),contact integer,address varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Database changed
+MariaDB [batcht430]> create table emp(id integer,name char(2...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(30),contact integer,address varchar(30))' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> create table emp(id integer,name char(20),email varchar(30),contact integer,address varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> Query OK, 0 rows affected (0.015 sec)
+    ->
+    -> MariaDB [batcht430]> desc emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [batcht430]> desc emp' at line 1
+MariaDB [batcht430]> +---------+-------------+------+-----+---------+-------+
+    -> | Field   | Type        | Null | Key | Default | Extra |
+    -> +---------+-------------+------+-----+---------+-------+
+    -> | id      | int(11)     | YES  |     | NULL    |       |
+    -> | name    | char(20)    | YES  |     | NULL    |       |
+    -> | email   | varchar(30) | YES  |     | NULL    |       |
+    -> | contact | int(11)     | YES  |     | NULL    |       |
+    -> | address | varchar(30) | YES  |     | NULL    |       |
+    -> +---------+-------------+------+-----+---------+-------+
+    -> 5 rows in set (0.036 sec)
+    ->
+    -> MariaDB [batcht430]> insert into emp values(1,'Ramesh','r@gmail.com',2323232323,'Bhiwandi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+---------+-------------+------+-----+---------+-------+
+| Field   | Type    ...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected, 1 warning (0.099 sec)
+    ->
+    -> MariaDB [batcht430]> insert into emp values(2,'suresh','s@gmail.com',2323232323,'Bhiwandi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected, 1 warning (0.099 sec)
+
+MariaDB [batcht430]> insert ...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected, 1 warning (0.005 sec)
+    ->
+    -> MariaDB [batcht430]> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> select ...' at line 1
+MariaDB [batcht430]> +------+--------+-------------+------------+----------+
+    -> | id   | name   | email       | contact    | address  |
+    -> +------+--------+-------------+------------+----------+
+    -> |    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+    -> |    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
+    -> +------+--------+-------------+------------+----------+
+    -> 2 rows in set (0.001 sec)
+    ->
+    -> MariaDB [batcht430]> insert into emp values(3,'jayesh','j@gmail.com',3223232323,'Bhiwandi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+------+--------+-------------+------------+----------+
+| id   | name   | ema...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected, 1 warning (0.004 sec)
+    ->
+    -> MariaDB [batcht430]> insert into emp values(4,'mayesh','m@gmail.com',4242424242,'Dombivli');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected, 1 warning (0.004 sec)
+
+MariaDB [batcht430]> insert ...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected, 1 warning (0.005 sec)
+    ->
+    -> MariaDB [batcht430]> insert into emp values(5,'payesh','p@gmail.com',4242424242,'kalyan west',6,'piyush','pu@gmail.com',4343434343,kalyan east);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> insert ...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'east)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> insert into emp values(5,'jayesh','j@gmail.com',3223232323,'Bhiwandi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> Query OK, 1 row affected, 1 warning (0.005 sec)
+    ->
+    -> MariaDB [batcht430]> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [batcht430]> select ...' at line 1
+MariaDB [batcht430]> +------+--------+-------------+------------+----------+
+    -> | id   | name   | email       | contact    | address  |
+    -> +------+--------+-------------+------------+----------+
+    -> |    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+    -> |    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
+    -> |    3 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+    -> |    4 | mayesh | m@gmail.com | 2147483647 | Dombivli |
+    -> |    5 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+    -> +------+--------+-------------+------------+----------+
+    -> 5 rows in set (0.001 sec)
+    ->
+    -> MariaDB [batcht430]> update emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+------+--------+-------------+------------+----------+
+| id   | name   | ema...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to emp1' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> alter table emp rename table emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp1' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> alter table emp rename emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to emp1' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> alter table emp rename table emp to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp to emp1' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> MariaDB [batcht430]> alter table emp rename to emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'the manual that corresponds to your MariaDB server version for the right synt...' at line 1
+MariaDB [batcht430]> Query OK, 0 rows affected (0.016 sec)
+    ->
+    -> MariaDB [batcht430]> alter table emp1 rename to emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [batcht430]> alter table emp1 ...' at line 1
+MariaDB [batcht430]> Query OK, 0 rows affected (0.021 sec)
+    ->
+    -> MariaDB [batcht430]> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [batcht430]> select * from emp' at line 1
+MariaDB [batcht430]> +------+--------+-------------+------------+----------+
+    -> | id   | name   | email       | contact    | address  |
+    -> +------+--------+-------------+------------+----------+
+    -> |    1 | Ramesh | r@gmail.com | 2147483647 | Bhiwandi |
+    -> |    2 | suresh | s@gmail.com | 2147483647 | Bhiwandi |
+    -> |    3 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+    -> |    4 | mayesh | m@gmail.com | 2147483647 | Dombivli |
+    -> |    5 | jayesh | j@gmail.com | 2147483647 | Bhiwandi |
+    -> +------+--------+-------------+------------+----------+
+    -> 5 rows in set (0.003 sec)
+    ->
+    -> MariaDB [batcht430]>;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+------+--------+-------------+------------+----------+
+| id   | name   | ema...' at line 1
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+----------+
+| id   | name        | email        | contact    | address  |
++------+-------------+--------------+------------+----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi    |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    9 | Kamesh      | NULL         |       NULL | NULL     |
+|    9 | NULL        | NULL         |       NULL | NULL     |
+|   10 | NULL        | NULL         |       NULL | NULL     |
+|   11 | NULL        | NULL         |       NULL | NULL     |
+|   12 | NULL        | NULL         |       NULL | NULL     |
++------+-------------+--------------+------------+----------+
+14 rows in set (0.001 sec)
+
+MariaDB [batcht430]> delect from emp where(id,name,email,contact,address) is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delect from emp where(id,name,email,contact,address) is null' at line 1
+MariaDB [batcht430]> delect from emp where id & name is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delect from emp where id & name is null' at line 1
+MariaDB [batcht430]> delect from emp where id AND name is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delect from emp where id AND name is null' at line 1
+MariaDB [batcht430]> delect from emp where id && name is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delect from emp where id && name is null' at line 1
+MariaDB [batcht430]> delect from emp where id  name is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delect from emp where id  name is null' at line 1
+MariaDB [batcht430]> Bye
+
+admin@ACPC-10 c:\xampp
+#
