@@ -1,0 +1,266 @@
+
+Setting environment for using XAMPP for Windows.
+admin@CR3-PC14 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.25-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| abhi               |
+| abhijeet_dhamane   |
+| apurva2            |
+| apurvadb           |
+| bhagyashreebatch   |
+| database_itvedant  |
+| database_itvedant1 |
+| database_itvedant3 |
+| database_itvedant4 |
+| db2                |
+| emp                |
+| emp1               |
+| first              |
+| first_db           |
+| flask_hriday       |
+| goku               |
+| information_schema |
+| mentorship         |
+| mybigdata          |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| shield             |
+| sql4to6            |
+| trigger1           |
+| vsd                |
++--------------------+
+26 rows in set (0.038 sec)
+
+MariaDB [(none)]> desc emp;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use emp;
+Database changed
+MariaDB [emp]> show tables;
++---------------+
+| Tables_in_emp |
++---------------+
+| customers     |
+| employee      |
++---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| e_id     | int(11)     | YES  |     | NULL    |       |
+| e_name   | char(20)    | YES  |     | NULL    |       |
+| e_salary | varchar(20) | YES  |     | NULL    |       |
+| email    | varchar(20) | YES  |     | NULL    |       |
+| dob      | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.017 sec)
+
+MariaDB [emp]> alter table employee rename to emp;
+Query OK, 0 rows affected (0.041 sec)
+
+MariaDB [emp]> show tables;
++---------------+
+| Tables_in_emp |
++---------------+
+| customers     |
+| emp           |
++---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> select * from emp;
+Empty set (0.003 sec)
+
+MariaDB [emp]> insert into emp values(1,'Amol','100000','3/1992'),(2,'Ravi','200000','4/72');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [emp]> insert into emp values(1,'Amol','amol@gmail.com','100000','3/1992'),(2,'Ravi','ravi@gmail.com','200000','4/72');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------+--------+--------+
+| e_id | e_name | e_salary       | email  | dob    |
++------+--------+----------------+--------+--------+
+|    1 | Amol   | amol@gmail.com | 100000 | 3/1992 |
+|    2 | Ravi   | ravi@gmail.com | 200000 | 4/72   |
++------+--------+----------------+--------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> /*update command is used to change the record or changed the record inside the table*/
+MariaDB [emp]> update emp set e_name='Dattu' where e_id=1;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------+--------+--------+
+| e_id | e_name | e_salary       | email  | dob    |
++------+--------+----------------+--------+--------+
+|    1 | Dattu  | amol@gmail.com | 100000 | 3/1992 |
+|    2 | Ravi   | ravi@gmail.com | 200000 | 4/72   |
++------+--------+----------------+--------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> update emp set e_id=id,e_name=name where e_id=e_id
+    -> ;
+ERROR 1054 (42S22): Unknown column 'id' in 'field list'
+MariaDB [emp]> alter table emp rename e_id,e_name to id,name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to id,name' at line 1
+MariaDB [emp]> alter table emp rename e_id to id,e_name to name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to id,e_name to name' at line 1
+MariaDB [emp]> alter table emp rename e_id to id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to id' at line 1
+MariaDB [emp]> alter table emp rename column e_id to id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'column e_id to id' at line 1
+MariaDB [emp]> alter table emp add Mobile Number integer(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'integer(20)' at line 1
+MariaDB [emp]> alter table emp add Mobile_Number integer(20);
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp
+    -> ;
++------+--------+----------------+--------+--------+---------------+
+| e_id | e_name | e_salary       | email  | dob    | Mobile_Number |
++------+--------+----------------+--------+--------+---------------+
+|    1 | Dattu  | amol@gmail.com | 100000 | 3/1992 |          NULL |
+|    2 | Ravi   | ravi@gmail.com | 200000 | 4/72   |          NULL |
++------+--------+----------------+--------+--------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> /*Alter table command is used to add,delete or modify column of existing table*/
+MariaDB [emp]> Alter table emp add age integer after dob;
+Query OK, 0 rows affected (0.011 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------+--------+--------+------+---------------+
+| e_id | e_name | e_salary       | email  | dob    | age  | Mobile_Number |
++------+--------+----------------+--------+--------+------+---------------+
+|    1 | Dattu  | amol@gmail.com | 100000 | 3/1992 | NULL |          NULL |
+|    2 | Ravi   | ravi@gmail.com | 200000 | 4/72   | NULL |          NULL |
++------+--------+----------------+--------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> update table emp set age=32,Mobile_Number=8888899999 where e_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp set age=32,Mobile_Number=8888899999 where e_id=1' at line 1
+MariaDB [emp]> update table emp set age=32 where e_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp set age=32 where e_id=1' at line 1
+MariaDB [emp]> update table emp set age='32' where e_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table emp set age='32' where e_id=1' at line 1
+MariaDB [emp]> update emp set age=32,Mobile_number=8888899999 where e_id=1;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [emp]> update emp set age=63,Mobile_number=8888899999 where e_id=2;
+Query OK, 1 row affected, 1 warning (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------+--------+--------+------+---------------+
+| e_id | e_name | e_salary       | email  | dob    | age  | Mobile_Number |
++------+--------+----------------+--------+--------+------+---------------+
+|    1 | Dattu  | amol@gmail.com | 100000 | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | ravi@gmail.com | 200000 | 4/72   |   63 |    2147483647 |
++------+--------+----------------+--------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> alter table emp add designation varchar(20) after e_name;
+Query OK, 0 rows affected (0.119 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+-------------+----------------+--------+--------+------+---------------+
+| e_id | e_name | designation | e_salary       | email  | dob    | age  | Mobile_Number |
++------+--------+-------------+----------------+--------+--------+------+---------------+
+|    1 | Dattu  | NULL        | amol@gmail.com | 100000 | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | NULL        | ravi@gmail.com | 200000 | 4/72   |   63 |    2147483647 |
++------+--------+-------------+----------------+--------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> update emp set designation='Sr.Customer Service Associate' where e-id=1;
+ERROR 1054 (42S22): Unknown column 'e' in 'where clause'
+MariaDB [emp]> update emp set designation='Sr.Customer Service Associate' where e_id=1;
+Query OK, 1 row affected, 1 warning (0.225 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [emp]> update emp set designation='Seniour Transport Manager' where e_id=2;
+Query OK, 1 row affected, 1 warning (0.006 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------------+----------------+--------+--------+------+---------------+
+| e_id | e_name | designation          | e_salary       | email  | dob    | age  | Mobile_Number |
++------+--------+----------------------+----------------+--------+--------+------+---------------+
+|    1 | Dattu  | Sr.Customer Service  | amol@gmail.com | 100000 | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | Seniour Transport Ma | ravi@gmail.com | 200000 | 4/72   |   63 |    2147483647 |
++------+--------+----------------------+----------------+--------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> update emp set e_salary=1000000,email='amol@gmail.com' where e_id=1;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------------+----------------+----------------+--------+------+---------------+
+| e_id | e_name | designation          | e_salary       | email          | dob    | age  | Mobile_Number |
++------+--------+----------------------+----------------+----------------+--------+------+---------------+
+|    1 | Dattu  | Sr.Customer Service  | 1000000        | amol@gmail.com | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | Seniour Transport Ma | ravi@gmail.com | 200000         | 4/72   |   63 |    2147483647 |
++------+--------+----------------------+----------------+----------------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> update emp set e_salary=2000000,email='rave@gmail.com' where e_id=2;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [emp]> selcet * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selcet * from emp' at line 1
+MariaDB [emp]> select * from emp;
++------+--------+----------------------+----------+----------------+--------+------+---------------+
+| e_id | e_name | designation          | e_salary | email          | dob    | age  | Mobile_Number |
++------+--------+----------------------+----------+----------------+--------+------+---------------+
+|    1 | Dattu  | Sr.Customer Service  | 1000000  | amol@gmail.com | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | Seniour Transport Ma | 2000000  | rave@gmail.com | 4/72   |   63 |    2147483647 |
++------+--------+----------------------+----------+----------------+--------+------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]> /*alter table table_name change column old_column_name new_column_name datatype(size)*/
+MariaDB [emp]> alter table emp change column e_salary salary integer(50);
+Query OK, 2 rows affected (0.043 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------------+---------+----------------+--------+------+---------------+
+| e_id | e_name | designation          | salary  | email          | dob    | age  | Mobile_Number |
++------+--------+----------------------+---------+----------------+--------+------+---------------+
+|    1 | Dattu  | Sr.Customer Service  | 1000000 | amol@gmail.com | 3/1992 |   32 |    2147483647 |
+|    2 | Ravi   | Seniour Transport Ma | 2000000 | rave@gmail.com | 4/72   |   63 |    2147483647 |
++------+--------+----------------------+---------+----------------+--------+------+---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [emp]> alter table emp change column Mobile_Number contact integer(90);
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [emp]> select * from emp;
++------+--------+----------------------+---------+----------------+--------+------+------------+
+| e_id | e_name | designation          | salary  | email          | dob    | age  | contact    |
++------+--------+----------------------+---------+----------------+--------+------+------------+
+|    1 | Dattu  | Sr.Customer Service  | 1000000 | amol@gmail.com | 3/1992 |   32 | 2147483647 |
+|    2 | Ravi   | Seniour Transport Ma | 2000000 | rave@gmail.com | 4/72   |   63 | 2147483647 |
++------+--------+----------------------+---------+----------------+--------+------+------------+
+2 rows in set (0.000 sec)
+
+MariaDB [emp]>
