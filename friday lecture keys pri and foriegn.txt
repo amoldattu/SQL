@@ -1,0 +1,252 @@
+
+Setting environment for using XAMPP for Windows.
+admin@ACPC-10 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| batcht430          |
+| data6to9           |
+| emp10to1           |
+| emp2               |
+| information_schema |
+| itvedant           |
+| jyp                |
+| mysql              |
+| performance_schema |
+| pg                 |
+| phpmyadmin         |
+| pratik_db          |
+| pro                |
+| rohit              |
+| sample             |
+| sql10to12          |
+| test               |
+| todo               |
++--------------------+
+18 rows in set (0.093 sec)
+
+MariaDB [(none)]> use batcht430;
+Database changed
+MariaDB [batcht430]> show tables;
++---------------------+
+| Tables_in_batcht430 |
++---------------------+
+| emp                 |
+| emp2                |
+| m1                  |
++---------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [batcht430]> use emp;
+ERROR 1049 (42000): Unknown database 'emp'
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+----------+
+| id   | name        | email        | contact    | address  |
++------+-------------+--------------+------------+----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi    |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    8 | mahesh      | NULL         |       NULL | NULL     |
+|    9 | Kamesh      | NULL         |       NULL | NULL     |
+|    9 | NULL        | NULL         |       NULL | NULL     |
+|   10 | NULL        | NULL         |       NULL | NULL     |
+|   11 | NULL        | NULL         |       NULL | NULL     |
+|   12 | NULL        | NULL         |       NULL | NULL     |
++------+-------------+--------------+------------+----------+
+14 rows in set (0.143 sec)
+
+MariaDB [batcht430]> update emp set email='mm@gmail.com',contact=9009090909 where id=8;
+Query OK, 2 rows affected, 2 warnings (0.005 sec)
+Rows matched: 2  Changed: 2  Warnings: 2
+
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+----------+
+| id   | name        | email        | contact    | address  |
++------+-------------+--------------+------------+----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi    |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL     |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL     |
+|    9 | Kamesh      | NULL         |       NULL | NULL     |
+|    9 | NULL        | NULL         |       NULL | NULL     |
+|   10 | NULL        | NULL         |       NULL | NULL     |
+|   11 | NULL        | NULL         |       NULL | NULL     |
+|   12 | NULL        | NULL         |       NULL | NULL     |
++------+-------------+--------------+------------+----------+
+14 rows in set (0.001 sec)
+
+MariaDB [batcht430]> update emp set name='Sureshh' email='kk@gmail.com',contact=9009090909,address='New Delhi' where id=9;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'email='kk@gmail.com',contact=9009090909,address='New Delhi' where id=9' at line 1
+MariaDB [batcht430]> update emp set name='Sureshh',email='kk@gmail.com',contact=9009090909,address='New Delhi' where id=9;
+Query OK, 2 rows affected, 2 warnings (0.006 sec)
+Rows matched: 2  Changed: 2  Warnings: 2
+
+MariaDB [batcht430]> select * from emp;
++------+-------------+--------------+------------+-----------+
+| id   | name        | email        | contact    | address   |
++------+-------------+--------------+------------+-----------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi  |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi  |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli  |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane     |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi     |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |
+|   10 | NULL        | NULL         |       NULL | NULL      |
+|   11 | NULL        | NULL         |       NULL | NULL      |
+|   12 | NULL        | NULL         |       NULL | NULL      |
++------+-------------+--------------+------------+-----------+
+14 rows in set (0.001 sec)
+
+MariaDB [batcht430]> select * from emp,emp1;
+ERROR 1146 (42S02): Table 'batcht430.emp1' doesn't exist
+MariaDB [batcht430]> select * from emp,emp2;
++------+-------------+--------------+------------+-----------+----+------+
+| id   | name        | email        | contact    | address   | id | Name |
++------+-------------+--------------+------------+-----------+----+------+
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi  |  1 | Amol |
+|    1 | Ramesh      | r@gmail.com  | 2147483647 | Bhiwandi  |  1 | D    |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi  |  1 | Amol |
+|    2 | suresh      | s@gmail.com  | 2147483647 | Bhiwandi  |  1 | D    |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |  1 | Amol |
+|    3 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |  1 | D    |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli  |  1 | Amol |
+|    4 | mayesh      | m@gmail.com  | 2147483647 | Dombivli  |  1 | D    |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |  1 | Amol |
+|    5 | jayesh      | j@gmail.com  | 2147483647 | Bhiwandi  |  1 | D    |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane     |  1 | Amol |
+|    6 | jayesh      | j@gmail.com  |  345454545 | Thane     |  1 | D    |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi     |  1 | Amol |
+|    7 | suresh dada | mj@gmail.com | 2147483647 | Delhi     |  1 | D    |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |  1 | Amol |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |  1 | D    |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |  1 | Amol |
+|    8 | mahesh      | mm@gmail.com | 2147483647 | NULL      |  1 | D    |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |  1 | Amol |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |  1 | D    |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |  1 | Amol |
+|    9 | Sureshh     | kk@gmail.com | 2147483647 | New Delhi |  1 | D    |
+|   10 | NULL        | NULL         |       NULL | NULL      |  1 | Amol |
+|   10 | NULL        | NULL         |       NULL | NULL      |  1 | D    |
+|   11 | NULL        | NULL         |       NULL | NULL      |  1 | Amol |
+|   11 | NULL        | NULL         |       NULL | NULL      |  1 | D    |
+|   12 | NULL        | NULL         |       NULL | NULL      |  1 | Amol |
+|   12 | NULL        | NULL         |       NULL | NULL      |  1 | D    |
++------+-------------+--------------+------------+-----------+----+------+
+28 rows in set (0.004 sec)
+
+MariaDB [batcht430]> create pk(id in,Name char(30),Address varchar(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pk(id in,Name char(30),Address varchar(100))' at line 1
+MariaDB [batcht430]> create table pk(id int,Name char(30),Address varchar(100));
+Query OK, 0 rows affected (0.060 sec)
+
+MariaDB [batcht430]> /*we can give primary key explicitly like when table is created just use alter command*/
+MariaDB [batcht430]> alter pk add primary key(id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pk add primary key(id)' at line 1
+MariaDB [batcht430]> alter table pk add primary key(id);
+Query OK, 0 rows affected (0.057 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> desc pk;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | int(11)      | NO   | PRI | NULL    |       |
+| Name    | char(30)     | YES  |     | NULL    |       |
+| Address | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+3 rows in set (0.031 sec)
+
+MariaDB [batcht430]> /*to drop the primary key*/
+MariaDB [batcht430]> alter table pk drop primary key;
+Query OK, 0 rows affected (0.050 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> desc pk;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | int(11)      | NO   |     | NULL    |       |
+| Name    | char(30)     | YES  |     | NULL    |       |
+| Address | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+3 rows in set (0.034 sec)
+
+MariaDB [batcht430]> /* to create composite key we can create primary key*/
+MariaDB [batcht430]> alter table pk add primay key(id,name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(id,name)' at line 1
+MariaDB [batcht430]> alter table pk add primary key(id,name);
+Query OK, 0 rows affected (0.051 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> insert into pk values(1,'Ajay'),(2,'Ajay');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [batcht430]> insert into pk values(1,'Ajay','Hallo'),(2,'Ajay','Hallo');
+Query OK, 2 rows affected (0.005 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [batcht430]> select * from pk;
++----+------+---------+
+| id | Name | Address |
++----+------+---------+
+|  1 | Ajay | Hallo   |
+|  2 | Ajay | Hallo   |
++----+------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk_id int,forieng key(pk_id) references pk(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk_id) references pk(id))' at line 1
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk_id int,foreing key(pk_id) references pk(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk_id) references pk(id))' at line 1
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk_id int,foreing key(pk_id) references pk(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk_id) references pk(id))' at line 1
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk1_id int,foreing key(pk1_id) references pk(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk1_id) references pk(id))' at line 1
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk1_id int,foreing key(pk1_id) references pk(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk1_id) references pk(id))' at line 1
+MariaDB [batcht430]> create table pk1(id int primary key,Name char(30),Address varchar(100));
+Query OK, 0 rows affected (0.018 sec)
+
+MariaDB [batcht430]> desc pk1;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | int(11)      | NO   | PRI | NULL    |       |
+| Name    | char(30)     | YES  |     | NULL    |       |
+| Address | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+3 rows in set (0.034 sec)
+
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk1_id int,foreing key(pk1_id) references pk1(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key(pk1_id) references pk1(id))' at line 1
+MariaDB [batcht430]> create table fk(salary double,dep_name varchar(20),pk1_id int,foreign key(pk1_id) references pk1(id));
+Query OK, 0 rows affected (0.067 sec)
+
+MariaDB [batcht430]> select * from pk1;
+Empty set (0.001 sec)
+
+MariaDB [batcht430]>
